@@ -19,4 +19,8 @@ router.get('/executives', function(req, res) {
 	res.sendFile(path.join(__dirname, '..', 'public/html/execs.html'));
 });
 
+router.get('/blog', function(req, res) {
+	res.sendFile(path.join(__dirname, '..', 'public/html/blog.html'));
+});
+
 module.exports = router;
