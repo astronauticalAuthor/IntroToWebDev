@@ -5,16 +5,17 @@ var http = require('http');
 // var db = require('./model/db');
 var routes = require('./routes/index');
 var posts = require('./routes/posts');
-var cors = require('cors');
+// var cors = require('cors');
 
 var app = express();
 
 
 app.use(express.static('public'));
 
-app.use(cors());
+// app.use(cors());
 app.use('/', routes);
 app.use('/posts', posts);
+
 
 // app.use(function(req, res, next) {
 //   var err = new Error('Not Found');
