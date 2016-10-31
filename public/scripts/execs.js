@@ -6,7 +6,7 @@ function loadExecs() {
       for (var key in data) {
         var exec = '<div class="execBlock">';
         exec += '<img src="images/' + key + '.jpg" class="execImage" />';
-        exec += "<p>" key + ' - ' + data[key] + "</p>";
+        exec += '<p class="execBlock">' + key + ' - ' + data[key] + '</p>';
         exec += '</div>';
 
         $('#contentarea').append(exec);
