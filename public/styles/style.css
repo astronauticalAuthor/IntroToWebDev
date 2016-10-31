@@ -76,3 +76,12 @@ body {
 	width: 700px;
 	height: 400px;
 }
+
+.execImage {
+	width: 100px;
+	height: 100px;
+}
+
+.execBlock {
+	height: 150px;
+}

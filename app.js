@@ -2,28 +2,32 @@ var express = require('express');
 var path = require('path');
 var http = require('http');
 
+var port = normalizePort(process.env.PORT || '3000');
+
 // var db = require('./model/db');
 var routes = require('./routes/index');
+var executives = require('./routes/executives');
 
 var app = express();
 
-
 app.use(express.static('public'));
-
 app.use('/', routes);
+app.use('/executiveInfo', executives);
 
-// app.use(function(req, res, next) {
-//   var err = new Error('Not Found');
-//   err.status = 404;
-//   next(err);
-// });
+http.createServer(app).listen(port);
 
-// app.use(function(err, req, res, next) {
-//   res.status(err.status || 500);
-//   res.render('error', {
-//     message: err.message,
-//     error: {}
-//   });
-// });
+function normalizePort(val) {
+  var port = parseInt(val, 10);
 
-http.createServer(app).listen(3000);
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
