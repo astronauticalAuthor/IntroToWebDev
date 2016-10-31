@@ -1,6 +1,7 @@
 body {
 	color: #323333;
 	background-color: #C4C4C4;
+	font-family: Georgia, Times, Times New Roman, serif;
 }
 
 #banner {
@@ -84,4 +85,14 @@ body {
 
 .execBlock {
 	height: 150px;
+}
+
+.aboutimg {
+	width: 250px;
+	height: 250px;
+	display: inline-block;
+	float: right;
+	margin-left: 20px;
+	margin-bottom: 20px;
+	border-radius: 5px;
 }
