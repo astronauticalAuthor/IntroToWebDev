@@ -18,6 +18,7 @@
   "homepage": "https://github.com/astronauticalAuthor/IntroToWebDev#readme",
   "dependencies": {
     "consolidate": "^0.14.1",
+    "cors": "^2.8.1",
     "express": "^4.14.0",
     "path": "^0.12.7",
     "swig": "^1.4.2"
