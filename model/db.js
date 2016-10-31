@@ -5,6 +5,9 @@ var mongoose = require('mongoose');
 // message and callback function
 var gracefulShutdown;
 var dbURI = 'mongodb://localhost/ktpappdb';
+if (process.env.NODE_ENV === 'production') {
+    dbURI = 'mongodb://tepleyna:ktpRose@ds139567.mlab.com:39567/ktpappdata'
+}
 mongoose.connect(dbURI);
 
 // Emulating disconnection events on Windows
