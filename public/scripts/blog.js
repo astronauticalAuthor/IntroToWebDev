@@ -36,9 +36,9 @@ function getPosts() {
 function displayPosts(posts) {
     for (var post in posts) {
         var html = '<div class="blogPosts">';
-        html += 'Title: ' + post.title + '<br />';
-        html += '' + post.body + '<br />';
-        html += post.datePosted + '</div><hr />';
+        html += 'Title: ' + post['title'] + '<br />';
+        html += post['body'] + '<br />';
+        html += post['datePosted'] + '</div><hr />';
 
         $("#contentarea").append(html);
     }
