@@ -13,6 +13,7 @@ var app = express();
 
 app.use(express.static('public'));
 app.use('/', routes);
+app.use('/posts', posts);
 app.use('/executiveInfo', executives);
 
 http.createServer(app).listen(port);
