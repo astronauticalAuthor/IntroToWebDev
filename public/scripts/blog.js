@@ -6,7 +6,7 @@ var Allposts;
 function getPosts() {
     console.log('ajax?');
     $.ajax({
-        url: 'https://csse280-term-project-backend.herokuapp.com/executiveInfo'
+        url: 'https://csse280-term-project-backend.herokuapp.com/posts'
     }).done(function (data){
         displayPosts(data);
     });
