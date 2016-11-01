@@ -1,5 +1,5 @@
 function loadExecs() {
-	  var url = 'https://csse280-term-project-backend.herokuapp.com/posts';
+	  var url = 'https://csse280-term-project-backend.herokuapp.com/executiveInfo';
     // if (process.env.NODE_ENV === 'production') {
     //   url = 'https://csse280-term-project-backend.herokuapp.com/executiveInfo'
     // }
