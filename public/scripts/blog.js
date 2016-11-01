@@ -34,26 +34,12 @@ function getPosts() {
 
 // dynamically display all the contacts from api
 function displayPosts(posts) {
-    postsDisplayLocation = $(document.createElement('ul'));
-    posts.forEach(function (post) {
-        postsDisplayLocation.append(
-            $($(document.createElement('div.blogPosts')).append(
-                $(document.createElement('div.blogPost')).append(
-                    $($(document.createElement('h3.title')).append(
-                        $(document.createTextNode("Title:" + post["title"]))
-                    )),
-                    $("br"),
-                    $($(document.createElement('p')).append(
-                        $(document.createTextNode(post["body"]))
-                    )),
-                    $($(document.createElement('p.small')).append(
-                        $(document.createTextNode(post["datePosted"]))
-                    )),
-                    $("<hr>")
-                )
-            ))
-        );
-    });
-    
-    $("#contentarea").append(postsDisplayLocation);
+    for (var post in posts) {
+        var html = '<div class="blogPosts">';
+        html += 'Title: ' + post.title + '<br />';
+        html += '' + post.body + '<br />';
+        html += post.datePosted + '</div><hr />';
+
+        $("#contentarea").append(html);
+    }
 }
