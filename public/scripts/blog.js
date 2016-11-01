@@ -8,7 +8,7 @@ function getPosts() {
     $.ajax({
         url: 'http://localhost:3000/posts'
     }).done(function (data){
-        console.log(data);
+        displayPosts(data);
     });
 }
 
@@ -34,14 +34,27 @@ function getPosts() {
 
 // dynamically display all the contacts from api
 function displayPosts(posts) {
-    contentArea = $(document).getElementById('#contentarea').setAttribute('background-color','red');        
-    // contentArea = document.getElementById('#contentarea');
-    postsDisplayLocation = document.createElement("p");
+    postsDisplayLocation = $(document.createElement('ul'));
     posts.forEach(function (post) {
-        postsDisplayLocation.appendChild(
-            // document.createTextNode(post[title])
-            $(document).createTextNode("noodle")
+        postsDisplayLocation.append(
+            $($(document.createElement('div.blogPosts')).append(
+                $(document.createElement('div.blogPost')).append(
+                    $($(document.createElement('h3.title')).append(
+                        $(document.createTextNode("Title:" + post["title"]))
+                    )),
+                    $("br"),
+                    $($(document.createElement('p')).append(
+                        $(document.createTextNode(post["body"]))
+                    )),
+                    $($(document.createElement('p.small')).append(
+                        $(document.createTextNode(post["datePosted"]))
+                    )),
+                    $("<hr>")
+                )
+            ))
+            // document.createTextNode("noodle")
         );
     });
-    contentArea.appendChild(postsDisplayLocation);
+    
+    $("#contentarea").append(postsDisplayLocation);
 }

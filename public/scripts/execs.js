@@ -1,6 +1,10 @@
 function loadExecs() {
-	$.ajax({
-		url: "https://csse280-term-project-backend.herokuapp.com/executiveInfo"
+	  var url = 'http://localhost:3000/executiveInfo';
+    // if (process.env.NODE_ENV === 'production') {
+    //   url = 'https://csse280-term-project-backend.herokuapp.com/executiveInfo'
+    // }
+  $.ajax({
+		url: url
 	})
     .done(function(data) {
       for (var key in data) {
