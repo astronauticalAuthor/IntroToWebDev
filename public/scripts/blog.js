@@ -2,7 +2,6 @@ var postsDisplayLocation;
 var contentArea;
 var Allposts;
 
-// make ajax call to get all the posts from api
 function getPosts() {
     $.ajax({
         url: 'https://csse280-term-project-backend.herokuapp.com/posts'
@@ -31,14 +30,12 @@ function getPosts() {
 //     }
 // }
 
-// dynamically display all the contacts from api
 function displayPosts(posts) {
-    console.log(posts);
-    for (var post in posts) {
+    for (var x = 0; x < posts.length; x++) {
         var html = '<div class="blogPosts">';
-        html += 'Title: ' + post['title'] + '<br />';
-        html += post['body'] + '<br />';
-        html += post['datePosted'] + '</div><hr />';
+        html += 'Title: ' + posts[x].title + '<br />';
+        html += posts[x].body + '<br />';
+        html += posts[x].datePosted + '</div><hr />';
 
         $("#contentarea").append(html);
     }
