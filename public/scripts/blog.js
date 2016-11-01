@@ -4,7 +4,6 @@ var Allposts;
 
 // make ajax call to get all the posts from api
 function getPosts() {
-    console.log('ajax?');
     $.ajax({
         url: 'https://csse280-term-project-backend.herokuapp.com/posts'
     }).done(function (data){
@@ -34,6 +33,7 @@ function getPosts() {
 
 // dynamically display all the contacts from api
 function displayPosts(posts) {
+    console.log(posts);
     for (var post in posts) {
         var html = '<div class="blogPosts">';
         html += 'Title: ' + post['title'] + '<br />';
