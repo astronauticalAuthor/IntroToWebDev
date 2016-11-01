@@ -6,7 +6,7 @@ var Allposts;
 function getPosts() {
     console.log('ajax?');
     $.ajax({
-        url: 'http://localhost:3000/posts'
+        url: 'https://csse280-term-project-backend.herokuapp.com/executiveInfo'
     }).done(function (data){
         displayPosts(data);
     });
@@ -52,7 +52,6 @@ function displayPosts(posts) {
                     $("<hr>")
                 )
             ))
-            // document.createTextNode("noodle")
         );
     });
     
