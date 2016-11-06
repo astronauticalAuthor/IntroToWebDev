@@ -122,3 +122,8 @@ a:link {
 	margin-bottom: 20px;
 	padding: 15px;
 }
+
+.paragraphInput {
+	width: 40em;
+	height: 15em;
+}
