@@ -2,8 +2,8 @@ var postsDisplayLocation;
 var contentArea;
 var Allposts;
 var isLoggedIn;
-var theURL= 'http://localhost:3000';
-// var theURL = 'https://csse280-term-project-backend.herokuapp.com/posts'
+// var theURL= 'http://localhost:3000';
+var theURL = 'https://csse280-term-project-backend.herokuapp.com/posts'
 
 function setUpBlog() {
     getPosts();
