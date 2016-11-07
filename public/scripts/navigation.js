@@ -41,6 +41,8 @@ function initLinks(isLoggedOn){
 		html += '<a href="/login">Log In</a>'
 	}
 	else {
+		html += 'Hi, Member!'
+		html += '<div class="green"> | </div>';
 		html += '<a href="/login">Log Out</a>'
 	}
 	html += '</div>' // close login div
