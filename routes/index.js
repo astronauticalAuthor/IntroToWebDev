@@ -22,6 +22,10 @@ router.get('/blog', function(req, res) {
 	res.sendFile(path.join(__dirname, '..', 'public/html/blog.html'));
 });
 
+router.get('/schedule', function(req, res) {
+	res.sendFile(path.join(__dirname, '..', 'public/html/schedule.html'));
+});
+
 router.get('/login', function(req, res) {
 	res.sendFile(path.join(__dirname, '..', 'public/html/login.html'));
 });
