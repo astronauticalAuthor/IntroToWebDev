@@ -5,8 +5,7 @@ function loadExecs() {
     // }
   $.ajax({
 		url: url
-	})
-    .done(function(data) {
+	}).done(function(data) {
       for (var key in data) {
         var exec = '<div class="execBlock">';
         exec += '<img src="images/' + key + '.jpg" class="execImage" />';
