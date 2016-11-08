@@ -3,12 +3,17 @@ var publicLinks = [["/", "Home"], ["/about", "About"], ["/rush", "Rush"], ["/exe
 var privateLinks = [["/schedule", "Schedule"],["/trees","Trees"]];
 
 function mainNavigation() {
-	isLoggedIn = checkLoggedIn();
-	initLinks(isLoggedIn);
-}
+	var url = 'https://csse280-term-project-backend.herokuapp.com';
 
-function checkLoggedIn() {
-	return true;
+	$.ajax({
+		url: url + '/login/login/checkLoggedIn',
+		method: 'POST',
+		data: {
+			guid: document.cookie
+		}
+	}).done(function (data) {
+		initLinks(data.loggedIn);
+	});
 }
 
 function initLinks(isLoggedOn){
@@ -43,12 +48,15 @@ function initLinks(isLoggedOn){
 	else {
 		// html += 'Hi, Member!'
 		// html += '<div class="green"> | </div>';
-		html += '<a href="/login">Log Out</a>'
+		html += '<a href="" onclick="logout()">Log Out</a>'
 	}
 	html += '</div>' // close login div
 	html += '</div>'	//close middlewith div 
 	// set html to a container
 
-
 	$("#bottombanner").append(html);
+}
+
+function logout() {
+	document.cookie = '';
 }
