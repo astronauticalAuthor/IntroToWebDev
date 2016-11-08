@@ -20,19 +20,19 @@ router.get('/', function(req, res) {
     });
 });
 
-    // .post(function (req, res) {
-    //     mongoose.model('Post').create({
-    //         title: req.body.title,
-    //         datePosted: new Date(),
-    //         body: req.body.body
-    //     }, function (err, post) {
-    //         if (err) {
-    //             res.send('Problem adding post to db');
-    //         } else {
-    //             res.redirect('/blog');
-    //         }
-    //     });
-    // })
+router.post('/', function (req, res) {
+    mongoose.model('Post').create({
+        title: req.body.title,
+        datePosted: new Date(),
+        body: req.body.body
+    }, function (err, post) {
+        if (err) {
+            res.send('Problem adding post to db');
+        } else {
+            res.redirect('/blog');
+        }
+    });
+})
     // .delete(function (req,res) {
     //     mongoose.model('Post').findByIdAndRemove(req.id)
     //         .exec(

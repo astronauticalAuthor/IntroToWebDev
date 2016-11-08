@@ -1,6 +1,6 @@
 var isLoggedIn = false;
 var publicLinks = [["/", "Home"], ["/about", "About"], ["/rush", "Rush"], ["/executives","Executives"],["/blog","Blog"]];
-var privateLinks = [["/schedule", "Schedule"]];
+var privateLinks = [["/schedule", "Schedule"],["/trees","Trees"]];
 
 function mainNavigation() {
 	isLoggedIn = checkLoggedIn();
@@ -41,8 +41,8 @@ function initLinks(isLoggedOn){
 		html += '<a href="/login">Log In</a>'
 	}
 	else {
-		html += 'Hi, Member!'
-		html += '<div class="green"> | </div>';
+		// html += 'Hi, Member!'
+		// html += '<div class="green"> | </div>';
 		html += '<a href="/login">Log Out</a>'
 	}
 	html += '</div>' // close login div

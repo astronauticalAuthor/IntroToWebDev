@@ -2,8 +2,8 @@ var postsDisplayLocation;
 var contentArea;
 var Allposts;
 var isLoggedIn;
-// var theURL= 'http://localhost:3000';
-var theURL = 'https://csse280-term-project-backend.herokuapp.com/posts'
+var theURL= 'http://localhost:3000';
+// var theURL = 'https://csse280-term-project-backend.herokuapp.com/posts'
 
 function setUpBlog() {
     getPosts();
@@ -48,16 +48,16 @@ function addPoster() {
     $("#contentarea").append(html);
 }
 
-// function postPost() {
-//     var aForm = $('#loginForm');
-//     var aTitle = aForm.title;
-//     var aBody = aForm.body;
-//     $.ajax({
-//         method: "POST",
-//         url: theURL + '/posts',
-//         data: { title: aTitle, body: aBody}
-//     }).done(function (){
-//         console.log("It thinks it finished?");
-//         window.location.replace("/blog");
-//     });
-// }
+function postPost() {
+    var aForm = $('#loginForm');
+    var aTitle = aForm.title;
+    var aBody = aForm.body;
+    $.ajax({
+        method: "POST",
+        url: theURL + '/posts',
+        data: { title: aTitle, body: aBody}
+    }).done(function (){
+        console.log("It thinks it finished?");
+        window.location.replace("/blog");
+    });
+}

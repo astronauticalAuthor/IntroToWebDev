@@ -19,13 +19,13 @@ app.use('/', routes);
 app.use('/executiveInfo', executives);
 
 app.use('/posts', posts);
-app.post('/posts', (req, res) => {
-	  db.save(req.body, (err, result) => {
-    if (err) return console.log(err)
-    console.log('saved to database')
-    res.redirect('/blog')
-  })
-});
+// app.post('/posts', (req, res) => {
+// 	  db.save(req.body, (err, result) => {
+//     if (err) return console.log(err)
+//     console.log('saved to database')
+//     res.redirect('/blog')
+//   })
+// });
 
 
 http.createServer(app).listen(port);
