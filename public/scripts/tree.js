@@ -27,7 +27,7 @@ function startTree() {
          		for (var j = 0; j < data.length; j++) {
          			littleIDS.push(data[i].littles[j]);
          		}
-         		for (var k = i + 1; k < data.length; k++) {
+         		for (var k = 0; k < data.length; k++) {
          			for (var z = 0; z < littleIDS.length; z++){
          				if (data[k].ref == littleIDS[z]) {
          					edges.add([{from: data[i].ref, to: littleIDS[z]}]);
