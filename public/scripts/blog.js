@@ -1,5 +1,5 @@
-var theURL= 'http://localhost:3000';
-// var theURL = 'https://csse280-term-project-backend.herokuapp.com'
+// var theURL= 'http://localhost:3000';
+var theURL = 'https://csse280-term-project-backend.herokuapp.com'
 
 function setUpBlog() {
     addPoster();
@@ -88,8 +88,7 @@ function cancelEditing() {
 
 function addPoster() {
     $.ajax({
-        // url: theURL + '/login/login/checkLoggedIn',
-        url: 'login/login/checkLoggedIn',
+        url: theURL + '/login/login/checkLoggedIn',
         method: 'POST',
         data: {
             guid: document.cookie
