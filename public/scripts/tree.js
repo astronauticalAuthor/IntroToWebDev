@@ -3,10 +3,13 @@ var nodes;
 var edges;
 var container;
 var data;
-var options = {};
-// var theURL= 'http://localhost:3000';
-var theURL = 'https://csse280-term-project-backend.herokuapp.com'
 var network;
+var theURL= 'http://localhost:3000';
+// var theURL = 'https://csse280-term-project-backend.herokuapp.com'
+
+var options = {
+	edges: {arrows: 'to'}
+};
 
 function startTree() {
 	$.ajax({
