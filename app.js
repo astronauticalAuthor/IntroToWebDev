@@ -8,8 +8,9 @@ var port = normalizePort(process.env.PORT || '3000');
 var db = require('./model/db');
 var pages = require('./routes/index');
 var executives = require('./routes/executives');
-var posts = require('./routes/posts');
 var login = require('./routes/login');
+var posts = require('./routes/posts');
+var users = require('./routes/users');
 
 var app = express();
 app.use(bodyParser.urlencoded({extended: true}));
@@ -18,13 +19,7 @@ app.use(express.static('public'));
 app.use('/', pages);
 app.use('/executiveInfo', executives);
 app.use('/posts', posts);
-// app.post('/posts', (req, res) => {
-// 	  db.save(req.body, (err, result) => {
-//     if (err) return console.log(err)
-//     console.log('saved to database')
-//     res.redirect('/blog')
-//   })
-// });
+app.use('/users', users);
 
 app.use('/login/login', login);
 

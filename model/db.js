@@ -58,3 +58,4 @@ process.on('SIGINT', function() {
 // BRING IN YOUR SCHEMAS & MODELS
 // Use plural form of name
 require('./posts');
+require('./users');
