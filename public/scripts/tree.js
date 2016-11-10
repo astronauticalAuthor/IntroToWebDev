@@ -4,52 +4,47 @@ var edges;
 var container;
 var data;
 var options = {};
-var theURL= 'http://localhost:3000';
-// var theURL = 'https://csse280-term-project-backend.herokuapp.com'
-var members = 0;
+// var theURL= 'http://localhost:3000';
+var theURL = 'https://csse280-term-project-backend.herokuapp.com'
+var network;
 
 function startTree() {
-	nodes = getNodes(); // create an array with nodes
-	edges = getEdges();  // create an array with edges
-	container = $('#mynetwork');  // create network
-	data = {
-		nodes: nodes,
-		edges: edges}; // provide the data in the vis format
-}
-
-function getMembers() {
-	 $.ajax({
+	$.ajax({
         url: theURL + '/users'
     }).done(function (data){
+		nodes = new vis.DataSet();
+		edges = new vis.DataSet();
+
         for (var i = 0; i < data.length; i++) {
-         	console.log(data[i].username);
-         } {
-        	members += 1;
-        }
+         	if (data[i].username) {
+         		nodes.add([{id: data[i].ref, label: data[i].username}]);
+         	}
+         }
+
+        for (var i = 0; i < data.length; i++) {
+         	if (data[i].littles) {
+         		var littleIDS = [];
+         		for (var j = 0; j < data.length; j++) {
+         			littleIDS.push(data[i].littles[j]);
+         		}
+         		for (var k = i + 1; k < data.length; k++) {
+         			for (var z = 0; z < littleIDS.length; z++){
+         				if (data[k].ref == littleIDS[z]) {
+         					edges.add([{from: data[i].ref, to: littleIDS[z]}]);
+         				}
+    				}
+         			
+         		}
+         	}
+         }
+		container = $('#mynetwork');  // create network
+		data = {
+			nodes: nodes,
+			edges: edges}; // provide the data in the vis format
+		network = new vis.Network(container[0], data, options);
     });
 }
 
-function getNodes() { 
-	getMembers();
-	nodes = new vis.DataSet([
-        {id: 1, label: members},
-        {id: 2, label: 'Node 2'},
-        {id: 3, label: 'Node 3'},
-        {id: 4, label: 'Node 4'},
-        {id: 5, label: 'Node 5'}
-    ]);
-    return nodes;
-}
-
-function getEdges() { 
-	edges = new vis.DataSet([
-        {from: 1, to: 3},
-        {from: 1, to: 2},
-        {from: 2, to: 4},
-        {from: 2, to: 5}
-    ]);
-    return edges;
-}
 
 function getContainer() {
 	return container[0];
