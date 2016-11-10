@@ -12,6 +12,7 @@ function mainNavigation() {
 			guid: document.cookie
 		}
 	}).done(function (data) {
+		console.log(data);
 		initLinks(data.loggedIn);
 	});
 }

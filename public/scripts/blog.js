@@ -10,7 +10,7 @@ function getPosts(postFunc) {
     $.ajax({
         url: theURL + '/posts'
     }).done(function (data){
-        postFunc(data);
+        postFunc(data.reverse());
     });
 }
 
