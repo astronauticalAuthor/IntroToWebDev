@@ -4,10 +4,19 @@
 
 	<head>
 		<title>Kappa Theta Pi</title>
+		<link href="../styles/vis.css" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" type="text/css" href="styles/style.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="../scripts/navigation.js"></script>
-		<script src="../scripts/navigation.js"></script>
+		<script type="text/javascript" src="../scripts/vis.js"></script>
+    	
+    	<style type="text/css">
+	        #mynetwork {
+	            width: 600px;
+	            height: 400px;
+	            border: 1px solid lightgray;
+	        }
+    	</style>
 	</head>
 
 	<body onload="mainNavigation();">
@@ -18,7 +27,41 @@
 
 		<div id="contentarea">
 			<h2> I am Groot </h2>
-			<canvas id="treesCanvas" width="700" height="600" style="border:1px solid #000000;"></canvas>
+			
+			<div id="mynetwork">
+				<script type="text/javascript">
+				    // create an array with nodes
+				    var nodes = new vis.DataSet([
+				        {id: 1, label: 'Node 1'},
+				        {id: 2, label: 'Node 2'},
+				        {id: 3, label: 'Node 3'},
+				        {id: 4, label: 'Node 4'},
+				        {id: 5, label: 'Node 5'}
+				    ]);
+
+				    // create an array with edges
+				    var edges = new vis.DataSet([
+				        {from: 1, to: 3},
+				        {from: 1, to: 2},
+				        {from: 2, to: 4},
+				        {from: 2, to: 5}
+				    ]);
+
+				    // create a network
+				    var container = document.getElementById('mynetwork');
+
+				    // provide the data in the vis format
+				    var data = {
+				        nodes: nodes,
+				        edges: edges
+				    };
+				    var options = {};
+
+				    // initialize your network!
+				    var network = new vis.Network(container, data, options);
+				</script>
+			</div>
+
 		</div>
 
 	</body>
