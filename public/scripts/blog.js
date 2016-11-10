@@ -1,11 +1,9 @@
-// var theURL= 'http://localhost:3000';
-var theURL = 'https://csse280-term-project-backend.herokuapp.com'
+var theURL= 'http://localhost:3000';
+// var theURL = 'https://csse280-term-project-backend.herokuapp.com'
+var posts;
 
 function setUpBlog() {
     addPoster();
-    $("#postSubmit").click(function(){
-        postPost();
-    });
 }
 
 function getPosts(postFunc) {
@@ -20,12 +18,12 @@ function displayAdminPosts(posts) {
     for (var x = 0; x < posts.length; x++) {
         var id = posts[x]._id.trim();
         var html = '<div class="post" id="' + id + '">';
-        html += '<p class="title">' + posts[x].title + '</p>';
+        html += '<p class="postTitle">' + posts[x].title + '</p>';
         html += '<p class="postBody">' + posts[x].body + '</p>'
-        html += '<p class="date">' + posts[x].datePosted + '</p>';
-        html += '<button onclick="deletePost(\'' + id + '\')">Delete</button>';
-        html += '<button onclick="editPost(\'' + id + '\')">Edit</button>';
-        html += '</div><hr />';
+        html += '<p class="postDate">' + posts[x].datePosted + '</p>';
+        html += '<div class="postButtons"><button onclick="deletePost(\'' + id + '\')">Delete</button>';
+        html += '<button onclick="editPost(\'' + id + '\')">Edit</button></div>';
+        html += '</div>';
 
         $("#blogPosts").append(html);
     }
@@ -35,10 +33,10 @@ function displayPosts(posts) {
     for (var x = 0; x < posts.length; x++) {
         var id = posts[x]._id.trim();
         var html = '<div class="post" id="' + id + '">';
-        html += '<p class="title">' + posts[x].title + '</p>';
+        html += '<p class="postTitle">' + posts[x].title + '</p>';
         html += '<p class="postBody">' + posts[x].body + '</p>'
-        html += '<p class="date">' + posts[x].datePosted + '</p>';
-        html += '</div><hr />';
+        html += '<p class="postDate">' + posts[x].datePosted + '</p>';
+        html += '</div>';
 
         $("#blogPosts").append(html);
     }
@@ -54,16 +52,16 @@ function deletePost(id) {
 }
 
 function editPost(id) {
-    var title = $('#' + id + ' .title').text();
+    var title = $('#' + id + ' .postTitle').text();
     var body = $('#' + id + ' .postBody').text();
-    var date = $('#' + id + ' .date').text();
+    var date = $('#' + id + ' .postDate').text();
 
     $('#' + id).empty();
-    var html = 'Post Title:<br /><input type="text" class="title" value="' + title + '" /><br />';
-    html += 'Post Body:<br /><textarea rows="10" cols="100" class="body">' + body + '</textarea><br />';
-    html += 'Date Posted:<br /><input type="text" class="date" value="' + date + '" /><br />';
-    html += '<button onclick="saveEditedPost(\'' + id + '\')">Save</button> ';
-    html += '<button onclick="cancelEditing()">Cancel</button>';
+    var html = 'Post Title:<br /><input type="text" class="edittitle" value="' + title + '" /><br /><br />';
+    html += 'Post Body:<br /><textarea rows="10" cols="100" class="editbody">' + body + '</textarea><br /><br />';
+    html += 'Date Posted:<br /><input type="text" class="editdate" value="' + date + '" /><br /><br />';
+    html += '<div class="postButtons"><button onclick="saveEditedPost(\'' + id + '\')">Save</button> ';
+    html += '<button onclick="cancelEditing()">Cancel</button></div>';
 
     $('#' + id).append(html);
 }
@@ -73,9 +71,9 @@ function saveEditedPost(id) {
         url: theURL + '/posts/' + id,
         method: 'PUT',
         data: {
-            title: $('#' + id + ' .title').val(),
-            body: $('#' + id + ' .body').val(),
-            datePosted: $('#' + id + ' .date').val()
+            title: $('#' + id + ' .edittitle').val(),
+            body: $('#' + id + ' .editbody').val(),
+            datePosted: $('#' + id + ' .editdate').val()
         }
     }).done(function (data) {
         window.location.replace('/blog');
@@ -95,15 +93,15 @@ function addPoster() {
         }
     }).done(function (data) {
         if (data.loggedIn) {
-            getPosts(displayAdminPosts);
+            posts = getPosts(displayAdminPosts);
 
-            var html = '<form id="loginForm" action="../posts" method="POST">';
-            html += '<p> Post Title:</p>'
-            html += '<input type="text" name="title"/>';
-            html += '<p> Post Body: </p>';
-            html += '<input type="text" name="body" class="paragraphInput"/>';
-            html += '<p><button type="submit">Post it!</button></p>';
-            html += '</form>';
+            var html = '<div id="loginForm">';
+            html += 'Post Title:<br />'
+            html += '<input type="text" name="title" id="makeTitle" /><br /><br />';
+            html += 'Post Body:<br />';
+            html += '<textarea class="paragraphInput" rows="10" cols="103"></textarea><br /><br />';
+            html += '<div class="postButtons"><button onclick="postPost()">Post it!</button></div>';
+            html += '</div>';
 
             $("#contentarea").append(html);
         }
@@ -114,9 +112,8 @@ function addPoster() {
 }
 
 function postPost() {
-    var aForm = $('#loginForm');
-    var aTitle = aForm.title;
-    var aBody = aForm.body;
+    var aTitle = $('#makeTitle').val();
+    var aBody = $('.paragraphInput').val();
     $.ajax({
         method: "POST",
         url: theURL + '/posts',

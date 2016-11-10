@@ -2,8 +2,8 @@ var publicLinks = [["/", "Home"], ["/about", "About"], ["/rush", "Rush"], ["/exe
 var privateLinks = [["/schedule", "Schedule"],["/trees","Trees"]];
 
 function mainNavigation() {
-	var url = 'https://csse280-term-project-backend.herokuapp.com';
-	// var url = 'http://localhost:3000';
+	// var url = 'https://csse280-term-project-backend.herokuapp.com';
+	var url = 'http://localhost:3000';
 
 	$.ajax({
 		url: url + '/login/login/checkLoggedIn',
@@ -17,25 +17,19 @@ function mainNavigation() {
 }
 
 function initLinks(isLoggedOn){
-	var html = '<div class="middlewidth">';
-	html += '<div id="navigation">'
-	//public links
-	for(var i=0; i< publicLinks.length; i++){
-		html += '<a href="';
-		html += publicLinks[i][0];
-		html += '">';
-		html += publicLinks[i][1];
-		html += '</a><div class="green"> | </div>';
+	var html = '<div class="middlewidth"><div id="navigation">';
+
+	for (var i = 0; i < publicLinks.length - 1; i++) {
+		html += '<a href="' + publicLinks[i][0] + '">' + publicLinks[i][1]; + '</a>';
+		html += '<div class="green"> | </div>';
 	}
 
-	if(isLoggedOn){
-		//private links
+	html += '<a href="' + publicLinks[i][0] + '">' + publicLinks[i][1]; + '</a>';
+
+	if (isLoggedOn) {
 		for(var i=0; i< privateLinks.length; i++){
-			html += '<a href="';
-			html += privateLinks[i][0];
-			html += '">';
-			html += privateLinks[i][1];
-			html += '</a><div class="green"> | </div>';
+			html += '<div class="green"> | </div>';
+			html += '<a href="' + privateLinks[i][0] + '">' + privateLinks[i][1] + '</a>';
 		}
 	};
 	html += '</div>';	//close navigation div

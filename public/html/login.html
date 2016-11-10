@@ -17,20 +17,13 @@
 		</div>
 
 		<div id="contentarea">
-			<div id="loginDescText">
-				<p>Are you a member of KTP?  Log on to check out family trees, the chapter calendar, and more!
-					Not sure what you are looking for?  It doesn't hurt to log in
-					Having trouble? Then ask our Director of Technology for access!</p>
+			<div id="login_form">
+				Username: <br />
+				<input type="text" id="username"/><br /><br />
+				Password: <br />
+				<input type="password" id="password"/><br /><br />
+				<div class="postButtons"><button onclick="login()">Log In</button></div>
 			</div>
-			<form id="login_form">
-				<p>Username: <br />
-				<input type="text" id="username"/></p>
-				<p>Password: <br />
-				<input type="password" id="password"/>
-				<br /></p>
-				<p><input type="button" name="submit" value="Login!" onclick="login()" /></p>
-			</form>
-			<p></p>
 		</div>
 
 	</body>
