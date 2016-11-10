@@ -1,6 +1,6 @@
 function login() {
 	var url = 'https://csse280-term-project-backend.herokuapp.com';
-
+	url = '';
 	$.ajax({
 		url: url + '/login/login',
 		method: 'POST',

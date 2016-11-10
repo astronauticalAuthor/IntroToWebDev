@@ -23,7 +23,7 @@ router.get('/', function(req, res) {
 router.post('/', function (req, res) {
     mongoose.model('Post').create({
         title: req.body.title,
-        datePosted: new Date(),
+        datePosted: new Date().toDateString(),
         body: req.body.body
     }, function (err, post) {
         if (err) {
@@ -33,22 +33,34 @@ router.post('/', function (req, res) {
         }
     });
 })
-    // .delete(function (req,res) {
-    //     mongoose.model('Post').findByIdAndRemove(req.id)
-    //         .exec(
-    //             function (err, post) {
-    //                 if (err) {
-    //                     res.status(404);
-    //                     handleError(err, res, 'GET error, problem retrieving data');
-    //                 }
-    //                 //else
-    //                 res.status(204);
-    //                 res.format({
-    //                     json: function () {
-    //                         res.json(null);
-    //                     }
-    //                 })
-    //             }
-    //         );
-    // });
+
+router.put('/:id', function (req, res) {
+    mongoose.model('Post').findById(req.params.id, function (err, post) {
+        if (err) {
+            res.send('false');
+        }
+        else {
+            post.update(req.body, function (error, newpost) {
+                if (error) {
+                    res.send('false');
+                }
+                else {
+                    res.send('true');
+                }
+            });
+        }        
+    });
+});
+
+router.delete('/:id', function (req, res) {
+    mongoose.model('Post').remove({ _id: req.params.id }, function (err) {
+        if (err) {
+            res.send('false');
+        }
+        else {
+            res.send('true');
+        }
+    });
+});
+
 module.exports = router;

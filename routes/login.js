@@ -36,6 +36,4 @@ router.post('/checkLoggedIn', function(req, res) {
 	});
 });
 
-
-
 module.exports = router;
